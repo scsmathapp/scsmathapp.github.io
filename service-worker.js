@@ -1,34 +1,21 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+// service-worker.js
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.3.0/workbox-sw.js');
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+if (workbox) {
+  workbox.precaching.precacheAndRoute([
+    // Add paths to your app's static assets here
+    '/index.html',
+    '/build/bundle.js',
+    '/build/bundle.js.map',
+    '/build/bundle.css',
+    '/global.css'
+  ]);
 
-importScripts(
-  "/precache-manifest.cf96041eaad6140b1d1b159ab9af5c8a.js"
-);
+  // Cache images and PDFs in a specific subfolder
+  workbox.routing.registerRoute(
+    ({ url }) => url.pathname.startsWith('/assets/'),
+    new workbox.strategies.CacheFirst()
+  );
 
-workbox.core.setCacheNameDetails({prefix: "SCSMathApp"});
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
-
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+  // Additional caching strategies and routes can be configured here
+}
