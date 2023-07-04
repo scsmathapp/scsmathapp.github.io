@@ -1,7 +1,7 @@
 // service-worker.js
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.3.0/workbox-sw.js');
 
-if (workbox) {
+if (self.location.hostname.includes('scsmathapp.github.io') && workbox) {
   workbox.precaching.precacheAndRoute([
     // Add paths to your app's static assets here
     '/index.html',
