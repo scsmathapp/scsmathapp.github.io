@@ -2,6 +2,8 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.3.0/workbox-sw.js');
 
 if (self.location.hostname.includes('scsmathapp.github.io') && workbox) {
+  const cacheName = 'scsmath-app-cache-v2';
+
   workbox.precaching.precacheAndRoute([
     // Add paths to your app's static assets here
     '/index.html',
@@ -14,7 +16,9 @@ if (self.location.hostname.includes('scsmathapp.github.io') && workbox) {
   // Cache images and PDFs in a specific subfolder
   workbox.routing.registerRoute(
     ({ url }) => url.pathname.startsWith('/assets/'),
-    new workbox.strategies.CacheFirst()
+    new workbox.strategies.CacheFirst({
+      cacheName: cacheName
+    })
   );
 
   // Additional caching strategies and routes can be configured here
