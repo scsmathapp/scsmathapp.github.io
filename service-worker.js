@@ -2,7 +2,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.3.0/workbox-sw.js');
 
 if (self.location.hostname.includes('scsmathapp.github.io') && workbox) {
-  const cacheName = 'scsmath-app-cache-v2';
+  const cacheName = 'scsmath-app-cache-v2.1';
 
   workbox.precaching.precacheAndRoute([
     // Add paths to your app's static assets here
