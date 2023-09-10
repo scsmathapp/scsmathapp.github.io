@@ -13,6 +13,17 @@ if (self.location.hostname.includes('scsmathapp.github.io') && workbox) {
     '/global.css'
   ]);
 
+  // Clean previous version
+  self.addEventListener('activate', (event) => {
+    event.waitUntil(
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.filter((cache) => cache !== cacheName).map((cache) => caches.delete(cache))
+        );
+      })
+    );
+  });
+
   // Cache images and PDFs in a specific subfolder
   workbox.routing.registerRoute(
     ({ url }) => url.pathname.startsWith('/assets/'),
