@@ -1,6 +1,6 @@
 // service-worker.js
 // Define a unique cache name for your app
-const cacheName = 'scsmath-app-cache-v5';
+const cacheName = 'scsmath-app-cache-v5.1';
 
 // List of static assets to cache when the service worker is installed
 const staticAssets = [
