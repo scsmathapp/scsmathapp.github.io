@@ -1,66 +1,34 @@
-// service-worker.js
-// Define a unique cache name for your app
-const cacheName = 'scsmath-app-cache-v5.1';
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
-// List of static assets to cache when the service worker is installed
-const staticAssets = [
-  // Add paths to your app's static assets here
-  '/index.html',
-  '/build/bundle.js',
-  '/build/bundle.js.map',
-  '/build/bundle.css',
-  '/global.css'
-];
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-// Install event: Cache static assets when the service worker is installed
-self.addEventListener('install', (ev) => {
-  console.log('Service worker installed', cacheName);
+importScripts(
+  "/precache-manifest.aec1bb20bc7dee9c9da9e716f8070c77.js"
+);
 
-  ev.waitUntil(
-    caches.open(cacheName)
-      .then(cache => {
-        return cache.addAll(staticAssets);
-      })
-  );
+workbox.core.setCacheNameDetails({prefix: "SCSMathApp"});
 
-  self.skipWaiting();
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
-// Activate event: Remove old caches if a new version of the service worker is activated
-self.addEventListener('activate', (ev) => {
-  console.log('Service worker activated');
-
-  ev.waitUntil(
-    caches.keys()
-      .then(keys => {
-        keys.filter(key => key !== cacheName)
-          .map(key => caches.delete(key))
-      })
-  );
-
-  clients.claim();
-});
-
-// Fetch event: Intercept and respond to fetch requests
-self.addEventListener('fetch', (ev) => {
-  ev.respondWith(
-    caches.match(ev.request)
-    .then(cacheRes => {
-      if (cacheRes === undefined) {
-        return fetch(ev.request, {cache: "no-store"})
-        .then((networkRes) => {
-          console.log('Service worker fetched', ev.request.url);
-
-          return caches.open(cacheName)
-            .then(cache => {
-              cache.put(ev.request, networkRes.clone());
-
-              return networkRes;
-            })
-          });
-        } else {
-          return cacheRes;
-        }
-      })
-  );
-});
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
