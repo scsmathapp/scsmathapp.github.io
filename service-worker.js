@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.679891c57a807cad6d73dd8f70041a7e.js"
+  "/precache-manifest.89ef18b97278359f51d418ffdc0e129b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "SCSMathApp"});
