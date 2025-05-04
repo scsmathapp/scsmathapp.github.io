@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/pdf/ServiceLife.d41d8cd9.pdf"
   },
   {
-    "revision": "fa67bb37d50c9983a76c",
-    "url": "/css/app.b801c19c.css"
+    "revision": "35655b129716a5eb8aab",
+    "url": "/css/app.c558a9dd.css"
   },
   {
     "revision": "1e1ed760d9bf1e2328ccb48df667d562",
@@ -356,12 +356,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/ŚrīŚrīPrapanna-jīvanāmṛtam.2f39d8ea.jpg"
   },
   {
-    "revision": "1e2943693e0a40a294fd251289d42b59",
+    "revision": "822665ca1f93537fe2999eb0e527f483",
     "url": "/index.html"
   },
   {
-    "revision": "fa67bb37d50c9983a76c",
-    "url": "/js/app.868e73a2.js"
+    "revision": "35655b129716a5eb8aab",
+    "url": "/js/app.79a187c8.js"
   },
   {
     "revision": "f764bda15227abeb5bdb",
