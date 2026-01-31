@@ -14,16 +14,14 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.f18a05b4d277524d64bb03fa18ddaae2.js"
+  "/precache-manifest.ca6eaed7e61e0e4acf1fd330b8bd83cf.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "SCSMathApp"});
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+workbox.core.skipWaiting();
+
+workbox.core.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
