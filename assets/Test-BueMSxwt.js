@@ -1,0 +1,1 @@
+import{T as e,t,v as n}from"./index-CvTjcnhV.js";var r={name:`Test`},i={class:`d-flex justify-content-center`};function a(t,r,a,o,s,c){return e(),n(`div`,i,` This is for testing purposes. `)}var o=t(r,[[`render`,a]]);export{o as default};
